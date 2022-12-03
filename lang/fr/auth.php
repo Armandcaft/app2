@@ -4,17 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Language Lines
+    | Lignes de langage d'authentification
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
+    | Les lignes de langue suivantes sont utilisées pendant l'authentification pour divers messages que nous devons afficher à l'utilisateur.
+    | messages que nous devons afficher à l'utilisateur. Vous êtes libre de modifier
+    | ces lignes de langue en fonction des besoins de votre application.
     |
     */
 
-    'failed' => 'Ceux-ci ne concordent pas.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'These credentials do not match our records.',
+    'password' => 'Le mot de passe fourni est incorrect.',
+    'throttle' => 'Too many login attempts. Veuillez réessayer dans :seconds seconds.',
 
 ];
