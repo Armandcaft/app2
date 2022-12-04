@@ -186,6 +186,8 @@ return [
          * Package Service Providers...
          */
         Barryvdh\Debugbar\ServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        // Laravel\Socialite\Facades\Socialite::class,
 
         /*
          * Application Service Providers...
@@ -210,8 +212,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ])->toArray(),
-    'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+
 
 ];

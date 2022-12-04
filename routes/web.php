@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
+
+Route::controller(GoogleController::class)->group(function() {
+    Route::get('social/google', 'redirect')->name('auth.google');
+    Route::get('social/google/callback', 'googleCallback');
+});
+// Route::get('social/google', [GoogleController::class, 'redirect'])->name('auth.google');
+// OR
+// Route::get('social/google', ' GoogleController@redirect')->name('auth.google');
