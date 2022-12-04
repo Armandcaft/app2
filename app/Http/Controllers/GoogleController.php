@@ -30,18 +30,22 @@ class GoogleController extends Controller
                 return redirect()->intended('dashboard');
 
             } else {
-                $new_user = User::updateOrCreate(['email' => $user->email],[
+                $new_user = User::updateOrCreate([
+                    'email' => $user->email
+                ], [
                     'name' => $user->name,
                     'google_id' => $user->id,
                     'password' => encrypt('password'),
                 ]);
 
-                Auth::register($new_user);
+                Auth::login($new_user);
+                // Auth::register($new_user);
 
                 return redirect()->intended('dashboard');
             }
         } catch(Exception $e) {
-            dd($e->message);
+            // return redirect('welcome');
+            dd($e->getMessage());
         }
     }
 }
