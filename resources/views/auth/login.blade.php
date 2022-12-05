@@ -47,7 +47,27 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="ml-1 btn btn-primary" href="{{ url('auth/facebook') }}" style="margin-top: 0px !important;background: blue;color: #ffffff;padding: 5px;border-radius:7px;" id="btn-fblogin">
+                <a class="btn" href="{{ route('auth.linkedln') }}"
+                    style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff;">
+                    Login with Linkedln
+                </a>
+            </div>
+            <div class="flex items-center justify-end mt-4">
+                <a class="btn" href="{{ route('auth.twitter') }}"
+                    style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff;">
+                    Login with Twitter
+                </a>
+            </div>
+            {{-- Login with GitHub --}}
+            <div class="flex items-center justify-end mt-4">
+                <a class="btn" href="{{ url('social/github') }}"
+                    style="background: #313131; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                    Login with GitHub
+                </a>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="ml-1 btn btn-primary" href="{{ url('social/facebook') }}" style="margin-top: 0px !important;background: blue;color: #ffffff;padding: 5px;border-radius:7px;" id="btn-fblogin">
                     <i class="fa fa-facebook-square" aria-hidden="true"></i> Login with Facebook
                 </a>
             </div>

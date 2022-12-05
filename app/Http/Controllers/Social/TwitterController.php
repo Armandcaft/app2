@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Http\Controllers\Social;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use Exception;
+
+class TwitterController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function redirectToTwitter()
+    {
+        return Socialite::driver('twitter')->redirect();
+    }
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function handleTwitterCallback()
+    {
+        try {
+
+            $user = Socialite::driver('twitter')->user();
+
+            $finduser = User::where('twitter_id', $user->id)->first();
+
+            if($finduser){
+
+                Auth::login($finduser);
+
+                return redirect()->intended('dashboard');
+
+            }else{
+                $newUser = User::updateOrCreate([
+                    'email' => $user->email
+                ], [
+                    'name' => $user->name,
+                    'github_id'=> $user->id,
+                    'password' => encrypt('password')
+                ]);
+
+                Auth::login($newUser);
+
+                return redirect()->intended('dashboard');
+            }
+
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+}

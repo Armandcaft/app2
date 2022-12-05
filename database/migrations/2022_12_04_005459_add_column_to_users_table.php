@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('nickname')->nullable();
             $table->string('avatar')->nullable();
             $table->string('google_id')->nullable();
+            $table->string('linkedln_id')->nullable();
+            $table->string('twitter')->nullable();
             $table->string('facebook_id')->nullable();
+            $table->string('github_id')->nullable();
         });
     }
 

@@ -21,6 +21,7 @@ class GoogleController extends Controller
         try {
             $user = Socialite::driver('google')->user();
 
+            /*
             // OAuth 2.0 providers...
             $token = $user->token;
             $refreshToken = $user->refreshToken;
@@ -36,6 +37,7 @@ class GoogleController extends Controller
             $user->getName();
             $user->getEmail();
             $user->getAvatar();
+            */
 
             $current_user = User::where('google_id', $user->id)->first();
 
