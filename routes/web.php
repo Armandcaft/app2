@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Social\GoogleController;
+use App\Http\Controllers\Social\FacebookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,11 @@ Route::controller(GoogleController::class)->group(function() {
 // Route::get('social/google', [GoogleController::class, 'redirect'])->name('auth.google');
 // OR
 // Route::get('social/google', ' GoogleController@redirect')->name('auth.google');
+
+Route::controller(FacebookController::class)->group(function(){
+    Route::get('auth/facebook', 'redirectToFacebook')->name('auth.facebook');
+    Route::get('auth/facebook/callback', 'handleFacebookCallback');
+});
+
+Route::get('/login/github', [LoginController::class, 'redirectToGithub'])->name('login.github');
+Route::get('/login/github/callback', [LoginController::class, 'handleGithubCallback']);

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
+use Exception;
 
 class GoogleController extends Controller
 {
@@ -20,6 +20,22 @@ class GoogleController extends Controller
     {
         try {
             $user = Socialite::driver('google')->user();
+
+            // OAuth 2.0 providers...
+            $token = $user->token;
+            $refreshToken = $user->refreshToken;
+            $expiresIn = $user->expiresIn;
+
+            // OAuth 1.0 providers...
+            $token = $user->token;
+            $tokenSecret = $user->tokenSecret;
+
+            // All providers...
+            $user->getId();
+            $user->getNickname();
+            $user->getName();
+            $user->getEmail();
+            $user->getAvatar();
 
             $current_user = User::where('google_id', $user->id)->first();
 

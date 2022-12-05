@@ -51,4 +51,17 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    protected function _registerOrLoginUser($data){
+        $user = User::where('email',$data->email)->first();
+        if(!$user){
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->provider_id = $data->id;
+            $user->avatar = $data->avatar;
+            $user->save();
+        }
+        Auth::login($user);
+    }
 }
