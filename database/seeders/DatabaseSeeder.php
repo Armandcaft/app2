@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,8 +23,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call([
-            AdminSeeder::class  //Upon executing 'php artisan db:seed, calls AdminSeeder.
-        ]);
+        // $this->call([
+        //     AdminSeeder::class,  //Upon executing 'php artisan db:seed, calls AdminSeeder.
+        //     PostsTableSeeder::class,
+        // ]);
+
+        Post::factory(100)->create();
     }
 }

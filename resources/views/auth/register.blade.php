@@ -62,6 +62,55 @@
                 </x-primary-button>
                 </div>
             </nav>
+            <div class="flex items-center justify-end mt-4">
+                <a class="btn" href="{{ route('auth.linkedln') }}"
+                    style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff;">
+                    Login with Linkedln
+                </a>
+            </div>
+            <div class="flex items-center justify-end mt-4">
+                <a class="btn" href="{{ route('auth.twitter') }}"
+                    style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff;">
+                    Login with Twitter
+                </a>
+            </div>
+            {{-- Login with GitHub --}}
+            <div class="flex items-center justify-end mt-4">
+                <a class="btn" href="{{ url('social/github') }}"
+                    style="background: #313131; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                    Login with GitHub
+                </a>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="ml-1 btn btn-primary" href="{{ url('social/facebook') }}" style="margin-top: 0px !important;background: blue;color: #ffffff;padding: 5px;border-radius:7px;" id="btn-fblogin">
+                    <i class="fa fa-facebook-square" aria-hidden="true"></i> Login with Facebook
+                </a>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <a href="social/google">
+                    <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;height: 40px;border-radius: 12px">
+                    {{-- <img src="../btn_google_signin_dark_normal_web.png" style="margin-left: 3em;height: 40px;border-radius: 12px"> --}}
+                </a>
+
+                <x-primary-button class="ml-3">
+                    {{ __('Log in') }}
+                </x-primary-button>
+            </div>
+
+            <a class="mt-5">
+                {{-- __('auth.register') --}}
+                {{ trans('auth.register') }}
+            </a>
+
+            <hr class="border my-2">
+
+            <div class="flex justify-contebt text-gray-500">
+                <a href="?locale=en" class="hover:text-gray-700 hover:font-bold">EN</a>
+                <a href="?locale=fr" class="hover:text-gray-700 hover:font-bold">FR</a>
+                <a href="?locale=es" class="hover:text-gray-700 hover:font-bold">ES</a>
+            </div>
         </form>
     </x-auth-card>
 </x-guest-layout>

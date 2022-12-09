@@ -82,6 +82,19 @@
                     {{ __('Log in') }}
                 </x-primary-button>
             </div>
+
+            <a class="mt-5">
+                {{-- __('auth.register') --}}
+                {{ trans('auth.register') }}
+            </a>
+
+            <hr class="border my-2">
+
+            <div class="flex justify-contebt text-gray-500">
+                <a href="?locale=en" class="hover:text-gray-700 hover:font-bold">EN</a>
+                <a href="?locale=fr" class="hover:text-gray-700 hover:font-bold">FR</a>
+                <a href="?locale=es" class="hover:text-gray-700 hover:font-bold">ES</a>
+            </div>
         </form>
     </x-auth-card>
 </x-guest-layout>

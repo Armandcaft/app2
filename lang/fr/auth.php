@@ -16,5 +16,7 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'Le mot de passe fourni est incorrect.',
     'throttle' => 'Too many login attempts. Veuillez réessayer dans :seconds seconds.',
+    'Login' => 'S\'incrire',
+    'Register' => 'Connexion',
 
 ];
