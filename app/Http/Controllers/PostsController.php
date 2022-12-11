@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Storage;
 class PostsController extends Controller
 {
     /**
+     * This defines the various routes requiring authentication
+     *
+     * Customizable if any other middeware is should be added.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'delsroy']);
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

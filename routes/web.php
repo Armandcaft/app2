@@ -47,7 +47,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/myblog', [PostController::class, 'index']);
+Route::get('/myblog', [PostController::class, 'index'])->middleware('auth');
 
 
 /*
@@ -82,13 +82,13 @@ Route::prefix('/blog')->group(function () {
     Route::patch('/{id}', [PostsController::class, 'update'])->name('blog.update');
     //DELETE
     Route::delete('/{id}', [PostsController::class, 'destroy'])->name('blog.destroy');
-});
+}); /* ->middleware('auth'); We defined in a __construct function the middeware usage */
 
 //Route resource
 // Route::resource('/blog', PostsController::class);
 
 //Route for te invoke method
-Route::get('/home', HomeController::class)->middleware('auth');
+Route::get('/home', HomeController::class);
 
 //MULTIPLE HTTP VERBS
 // Route::match(['get', 'post'], '/blog', [PostsController::class, 'index']);
