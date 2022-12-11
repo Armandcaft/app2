@@ -88,7 +88,7 @@ Route::prefix('/blog')->group(function () {
 // Route::resource('/blog', PostsController::class);
 
 //Route for te invoke method
-Route::get('/home', HomeController::class);
+Route::get('/home', HomeController::class)->middleware('auth');
 
 //MULTIPLE HTTP VERBS
 // Route::match(['get', 'post'], '/blog', [PostsController::class, 'index']);

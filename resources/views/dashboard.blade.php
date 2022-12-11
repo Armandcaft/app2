@@ -18,9 +18,11 @@
             </h1>
 
             @foreach (Auth::user()->posts as $post)
-                <h2>
-                    {{ $post->title }}
-                </h2>
+                <div>
+                    <a href="{{ route('blog.show', ['id' => $post->id]) }}">
+                        {{ $post->title }}
+                    </a>
+                </div>
             @endforeach
 
         </div>
