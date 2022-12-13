@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nickname',
+        'avatar',
+        'google_id',
+        'linkedln_id',
+        'twitter_id',
+        'facebook_id',
+        'github_id',
+        'user_type',
     ];
 
     /**
@@ -43,4 +51,16 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
         'is_verified' => 'boolean',
     ];
+
+    protected function user_type(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) =>  ["user", "admin", "manager"][$value],
+        );
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_admin')->default(false);
+            $table->tinyInteger('user_type')->default(0);
+            /* Users: 0=>User, 1=>Admin, 2=>Manager */
             $table->boolean('is_verified')->default(false);
             $table->rememberToken();
             $table->timestamps();

@@ -34,5 +34,15 @@ class AdminSeeder extends Seeder
             'is_verified' => true,
             'is_admin' => false,
         ]);
+
+        //My dummy data
+        User::create([
+            'name' => 'Christian Armand',
+            'email' => 'fohomtchuente@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('raphael00'),
+            'is_verified' => true,
+            'is_admin' => true,
+        ]);
     }
 }

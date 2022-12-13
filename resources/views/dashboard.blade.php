@@ -12,6 +12,19 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+
+            <h1 class="text-xl font-bold pt-8 pb-2">
+                Post of: {{ Auth::user()->name }}
+            </h1>
+
+            @foreach (Auth::user()->posts as $post)
+                <div>
+                    <a href="{{ route('blog.show', ['id' => $post->id]) }}">
+                        {{ $post->title }}
+                    </a>
+                </div>
+            @endforeach
+
         </div>
     </div>
 </x-app-layout>
