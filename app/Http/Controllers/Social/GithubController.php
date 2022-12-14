@@ -42,10 +42,10 @@ class GithubController extends Controller
 
             }else{
                 $newUser = User::updateOrCreate([
-                    'email' => $user->email
+                    'github_id'=> $user->id,
                 ], [
                     'name' => $user->name,
-                    'github_id'=> $user->id,
+                    'email' => $user->email,
                     'password' => encrypt('123456dummy')
                 ]);
 

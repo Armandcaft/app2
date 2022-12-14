@@ -23,6 +23,7 @@ class PostsTableSeeder extends Seeder
                 'image_path' => 'Empty',
                 'is_published' => false,
                 'min_to_read' => 2,
+                'user_id' => 2,
             ],
             [
                 'title' => 'Post Two',
@@ -31,13 +32,47 @@ class PostsTableSeeder extends Seeder
                 'image_path' => 'Empty',
                 'is_published' => false,
                 'min_to_read' => 2,
+                'user_id' => 2,
             ],
-                'title' => 'Model Factories',
+            ['
+                title' => 'Model Factories',
                 'excerpt' => 'Excerpt of our first model factory',
                 'body' => 'Content of body',
                 'image_path' => 'Image Path',
                 'is_published' => 1,
                 'min_to_read' => 2,
+                'user_id' => 2,
+            ],
+            [
+                'title' => 'Post Four',
+                'excerpt' => 'Summary of Post Four',
+                'body' => 'Body of Post Four',
+                'image_path' => 'Empty',
+                'is_published' => false,
+                'min_to_read' => 2,
+                'user_id' => 3,
+            ],
+            [
+                'title' => 'Post Five',
+                'excerpt' => 'Summary of Post Five',
+                'body' => 'Body of Post Five',
+                'image_path' => 'Empty',
+                'is_published' => false,
+                'min_to_read' => 2,
+                'user_id' => 3,
+            ],
+            [
+                'title' => 'Model Factories 2',
+                'excerpt' => 'Excerpt of our sixth model factory',
+                'body' => 'Content of body',
+                'image_path' => 'Image Path',
+                'is_published' => 1,
+                'min_to_read' => 2,
+                'user_id' => 3,
+            ],
+            [
+                //
+            ],
         ];
 
         /**
