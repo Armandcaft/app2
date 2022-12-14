@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Post;
+use App\Models\PostMeta;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,5 +30,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Post::factory(100)->create();
+        PostMeta::factory(100)->create();
     }
 }

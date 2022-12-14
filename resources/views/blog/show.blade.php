@@ -6,18 +6,35 @@
     <title>Laravel App</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 
-    <meta
+    @if ($post->meta !== null)
+    {{-- <?php dd($post) ?> --}}
+        <meta
         name="description"
-        content="{{ $post->meta->meta_description ? $post->meta->meta_description : '' }}"
-    />
-    <meta
+        content="{{ ($post->meta->meta_description == null) ? '' : ($post->meta->meta_description) }}"
+        />
+        <meta
         name="keywords"
         content="{{ $post->meta->meta_keywords ? $post->meta->meta_keywords : '' }}"
-    />
-    <meta
-        name="robots"
-        content="{{ $post->meta->meta_robots ? $post->meta->meta_robots : '' }}"
-    />
+        />
+        <meta
+            name="robots"
+            content="{{ $post->meta->meta_robots ? $post->meta->meta_robots : '' }}"
+        />
+    @else
+        {{-- <?php dd($post) ?> --}}
+        <meta
+        name="description"
+        content="No description"
+        />
+        <meta
+        name="keywords"
+        content="No keyword"
+        />
+        <meta
+        name="robot"
+        content="No robot"
+        />
+    @endif
 </head>
 <body>
     <div class="w-4/5 mx-auto">

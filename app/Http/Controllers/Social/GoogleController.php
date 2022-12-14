@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Social;
 
-use App\Http\Controllers\Controller;
+use Exception;
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Exception;
+use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
 {
@@ -22,30 +24,31 @@ class GoogleController extends Controller
             $user = Socialite::driver('google')->user();
 
             /*
-            // OAuth 2.0 providers...
-            $token = $user->token;
-            $refreshToken = $user->refreshToken;
-            $expiresIn = $user->expiresIn;
+                // OAuth 2.0 providers...
+                $token = $user->token;
+                $refreshToken = $user->refreshToken;
+                $expiresIn = $user->expiresIn;
 
-            // OAuth 1.0 providers...
-            $token = $user->token;
-            $tokenSecret = $user->tokenSecret;
+                // OAuth 1.0 providers...
+                $token = $user->token;
+                $tokenSecret = $user->tokenSecret;
 
-            // All providers...
-            $user->getId();
-            $user->getNickname();
-            $user->getName();
-            $user->getEmail();
-            $user->getAvatar();
+                // All providers...
+                $user->getId();
+                $user->getNickname();
+                $user->getName();
+                $user->getEmail();
+                $user->getAvatar();
             */
 
             $current_user = User::where('google_id', $user->id)->first();
 
+            // $d = Carbon::now();
+            // $current_user = DB::update('UPDATE users SET email_verified_at = $d AND is_verified = true where google_id = $user->id', ['John']);
+
             if($current_user) {
 
                 Auth::login($current_user);
-
-                return redirect()->intended('dashboard');
 
             } else {
                 $new_user = User::updateOrCreate([
@@ -54,13 +57,15 @@ class GoogleController extends Controller
                     'name' => $user->name,
                     'google_id' => $user->id,
                     'password' => encrypt('password'),
+                    'email_verified_at' => Carbon::now(),
+                    'is_verified' => true,
                 ]);
 
                 Auth::login($new_user);
                 // Auth::register($new_user);
-
-                return redirect()->intended('dashboard');
             }
+
+            return redirect()->intended('dashboard');
         } catch(Exception $e) {
             // return redirect('welcome');
             dd($e->getMessage());

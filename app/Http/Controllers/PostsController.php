@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostFormRequest;
+use App\Models\PostMeta;
 use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
@@ -18,7 +19,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'delsroy']);
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
     }
     /**
      * Display a listing of the resource.
@@ -107,7 +108,7 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        // dd($post);
+        // dd($post->meta);
 
         return view('blog.show', [
             'post' => $post,
