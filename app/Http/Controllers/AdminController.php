@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,18 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $posts = Post::orderBy('updated_at', 'desc')
+                     ->where('user_id', '=', auth()->user()->id)
+                     ->paginate(10);
+
+        // dd($posts);
+
+        $users = User::all();
+
+        return view('admin.index', [
+            'posts' => $posts,
+            'users' => $users,
+        ]);
     }
 
     /**

@@ -1,39 +1,26 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    />
-    <meta
-        http-equiv="X-UA-Compatible"
-        content="ie=edge"
-    />
-    <title>
-        Laravel App
-    </title>
-    <link
-        rel="stylesheet"
-        href="{{ asset('css/app.css') }}"
-    />
-</head>
-<body class="w-full h-full bg-gray-100">
-    <div class="w-4/5 mx-auto">
-        <div class="text-center pt-20">
-            <h1 class="text-3xl text-gray-700">
-                All Articles
-            </h1>
-            <hr class="border border-1 border-gray-300 mt-10">
-        </div>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('All Articles') }}
+        </h2>
+    </x-slot>
 
-        @if (Auth::user())
-            <div class="py-10 sm:py-20">
-                <a class="primary-btn inline text-base sm:text-xl bg-green-500 py-4 px-4 shadow-xl rounded-full transition-all hover:bg-green-400"
-                href="{{ route('blog.create') }}">
-                    New Article
-                </a>
-            </div>
-        @endif
+    <div class="bg-gray-100">
+        <div class="w-4/5 mx-auto">
+            <nav class="text-center mt-3 mb-5">
+                <h1 class="text-3xl text-gray-700">
+                    @if (Auth::user())
+                    <nav class="">
+                        <a class="primary-btn inline text-base sm:text-xl bg-green-500 py-2 px-2 shadow-xl rounded-full transition-all hover:bg-green-400"
+                        href="{{ route('blog.create') }}">
+                            New Article
+                        </a>
+                    </nav>
+                    @endif
+                </h1>
+            </nav>
+            <hr class="border border-1 border-gray-300 ">
+        </div>
     </div>
 
     @if (session()->has('message'))
@@ -67,7 +54,7 @@
                            class="text-green-500 italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all">
                             {{ $post->user->name }}
                         </a>
-                    op {{ $post->updated_at->format('d-m-y h:m:s') }}
+                    updated at {{ $post->updated_at->format('d-m-y h:m:s') }}
                 </span>
 
                 <a href="{{ route('blog.edit', ['id'=>$post->id]) }}" class="block italic text-green-500 border-b-1 border-green-400 ">
@@ -90,6 +77,4 @@
     <div >
         {{ $posts->links() }}
     </div>
-
-</body>
-</html>
+</x-app-layout>

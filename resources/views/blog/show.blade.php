@@ -37,22 +37,35 @@
     @endif
 </head>
 <body>
+    <x-app-layout>
+        <x-slot name="header">
+            <div class="pt-4">
+                <a href="{{ URL::previous() }}"
+                   class="text-green-500 italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all py-20">
+                    < Back to previous page
+                </a>
+                {{-- <a href="{{ URL::previous() }}"
+                   class="text-green-500 ml-auto italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all py-20 text-end">
+                    > Go to next page
+                </a> --}}
+            </div>
+            <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Article n°') }} {{ $post->id }}
+            </h2>
+        </x-slot>
     <div class="w-4/5 mx-auto">
-        <div class="pt-10">
-            <a href="{{ URL::previous() }}"
-               class="text-green-500 italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all py-20">
-                < Back to previous page
-            </a>
-        </div>
 
-        <h4 class="text-left sm:text-center text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 py-10 sm:py-20">
+        <h4 class="text-left underline-offset sm:text-center font-mono text-gray-900 py-3 mt-5">
+            {{ __('Title') }}
+        </h4>
+        <h4 class="text-left sm:text-center text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 py-1 sm:py-1">
             {{ $post->title }}
         </h4>
 
         <p class="pt-4 italic">
             Categories:
             @foreach ($post->categories as $category)
-                {{ $categories->title }}
+                {{ $category->title }}
             @endforeach
         </p>
         {{-- {{ dd($post->meta) }} --}}
@@ -65,8 +78,10 @@
                         href=""
                         class="font-bold text-green-500 italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all py-20">
                         Code With Stormeur
-                    </a>
-                    On 03-01-2023
+                    </a> On
+                    {{ $post->created_at->format('d-m-y h:m:s') }}
+                    updated at
+                    {{ $post->updated_at->format('d-m-y h:m:s') }}
                 </span>
             </div>
         </div>
@@ -82,4 +97,5 @@
         </div>
     </div>
     </body>
+</x-app-layout>
 </html>
