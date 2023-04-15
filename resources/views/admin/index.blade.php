@@ -4,7 +4,7 @@
             {{ __('All') }} {{ Auth::user()->name }}{{ __('\'s') }} {{ __('Articles') }}
         </h2>
         <div class="text-center text-green-400">
-            <a href="{{ env('USERSTACK_URL') }}" class="hover:text-black"> Get my info </a>
+            <a href="{{ env('USERSTACK_URL') }}" class="hover:text-orange-300"> Get my info </a>
             |
             <a href="{{ url('/telescope') }}" class="hover:text-purple-600"> Monitor My Application </a>
         </div>

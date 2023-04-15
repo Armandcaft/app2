@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Laravel\Telescope\Telescope;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
@@ -28,6 +29,11 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                    $entry->isFailedJob() ||
                    $entry->isScheduledTask() ||
                    $entry->hasMonitoredTag();
+        });
+
+        //Display user's avatar profile
+        Telescope::avatar(function (string $id, string $email) {
+            return '/avatars/'.User::find($id)->avatar_path;
         });
     }
 
@@ -58,7 +64,8 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     {
         Gate::define('viewTelescope', function ($user) {
             return in_array($user->email, [
-                //
+                'admin@email.com',
+                'fohomtchuente@gmail.com',
             ]);
         });
     }

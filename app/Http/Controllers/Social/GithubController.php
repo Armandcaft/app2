@@ -46,7 +46,9 @@ class GithubController extends Controller
                 ], [
                     'name' => $user->name,
                     'email' => $user->email,
-                    'password' => encrypt('123456dummy')
+                    'password' => encrypt('password'),
+                    // 'github_token' => $user->token,
+                    // 'github_refresh_token' => $user->refreshToken,
                 ]);
 
                 Auth::login($newUser);
