@@ -3,7 +3,56 @@
         <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">
             {{ __('All') }} {{ Auth::user()->name }}{{ __('\'s') }} {{ __('Articles') }}
         </h2>
+        <div class="text-center text-green-400">
+            <a href="{{ env('USERSTACK_URL') }}" class="hover:text-black"> Get my info </a>
+            |
+            <a href="{{ url('/telescope') }}" class="hover:text-purple-600"> Monitor My Application </a>
+        </div>
     </x-slot>
+        <br>
+        {{ $mytime = Carbon\Carbon::now()->format('H:i:s d-m-Y') }}
+        <br>
+        {{ $ip = request()->ip(); }}
+        <br>
+        &nbsp;{{ucwords($mytime)}} &nbsp;{{ucwords(request()->ip())}} <br>
+        <div style="float:left;">{{ucwords(request()->ip())}}</div>
+        <br>
+
+        {{-- <div class="container">
+            <h1>Export Data to Excel File</h1>
+            <br>
+            <div class="form-group">
+                <a href="{{ url('/') }}/export/xlsx" class="btn btn-success">Export to .xlsx</a>
+                <a href="{{ url('/') }}/export/xls" class="btn btn-primary">Export to .xls</a>
+            </div>
+            <table class="table table-striped table-bordered ">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Excerpt</th>
+                        <th>Body</th>
+                        <th>Image path</th>
+                        <th>Min to read</th>
+                        <th>User that published</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($posts as $empDetails)
+                    <tr>
+                        <td>{{ $empDetails->id }}</td>
+                        <td>{{ $empDetails->title }}</td>
+                        <td>{{ $empDetails->excerpt }}</td>
+                        <td>{{ $empDetails->body }}</td>
+                        <td>{{ $empDetails->image_path }}</td>
+                        <td>{{ $empDetails->min_to_read }}</td>
+                        <td>{{ $user->(empDetails->userid) }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {{ $posts->links() }}
+        </div> --}}
 
     <div class="bg-gray-100">
         <div class="w-4/5 mx-auto">

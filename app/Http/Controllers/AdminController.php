@@ -100,4 +100,44 @@ class AdminController extends Controller
     {
         //
     }
+
+    /**
+     * After installing the Spreadsheet package
+     * *composer require phpoffice/phpspreadsheet --prefer-source
+     * *composer install
+     *
+     * @param [type] $type
+     * @return void
+     */
+    // public function export($type) {
+    //     $posts = Post::all();
+    //     $spreadsheet = new Spreadsheet();
+    //     $sheet = $spreadsheet->getActiveSheet();
+    //     $sheet->setCellValue('A1', 'Id');
+    //     $sheet->setCellValue('C1', 'Title');
+    //     $sheet->setCellValue('B1', 'Excerpt');
+    //     $sheet->setCellValue('D1', 'Body');
+    //     $sheet->setCellValue('E1', 'Image path');
+    //     $sheet->setCellValue('E1', 'Reading time in minutes');
+    //     $sheet->setCellValue('F1', 'User that published');
+    //     $rows = 2;
+    //     foreach($posts as $empDetails){
+    //     $sheet->setCellValue('A' . $rows, $empDetails['id']);
+    //     $sheet->setCellValue('B' . $rows, $empDetails['title']);
+    //     $sheet->setCellValue('C' . $rows, $empDetails['excerpt']);
+    //     $sheet->setCellValue('D' . $rows, $empDetails['body']);
+    //     $sheet->setCellValue('E' . $rows, $empDetails['image_path']);
+    //     $sheet->setCellValue('F' . $rows, $empDetails['min_to_read']);
+    //     $rows++;
+    //     }
+    //     $fileName = "posts.".$type;
+    //     if($type == 'xlsx') {
+    //     $writer = new Xlsx($spreadsheet);
+    //     } else if($type == 'xls') {
+    //     $writer = new Xls($spreadsheet);
+    //     }
+    //     $writer->save("export/".$fileName);
+    //     header("Content-Type: application/vnd.ms-excel");
+    //     return redirect(url('/')."/export/".$fileName);
+    // }
 }

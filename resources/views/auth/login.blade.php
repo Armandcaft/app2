@@ -65,11 +65,9 @@
                     Login with GitHub
                 </a>
             </div>
-
             <div class="flex items-center justify-end mt-4">
-                <a class="ml-1 btn btn-primary" href="{{ url('social/facebook') }}" style="margin-top: 0px !important;background: blue;color: #ffffff;padding: 5px;border-radius:7px;" id="btn-fblogin">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    {{-- <img class="" style="/*max-width: 100%; height: auto;*/ width: 100px; height: 100px; object-fit: contain;" src="https://cdn-icons-png.flaticon.com/512/1076/1076990.png?w=740&t=st=1681251610~exp=1681252210~hmac=512b95c6fd6553a5e14f88433d1decf13f416c9cdfe494d2fc4a66f287ad040b"> --}}
+                <a class="btn" href="{{ url('social/facebook') }}"
+                    style="margin-top: 0px !important;background: blue; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
                     Login with Facebook
                 </a>
             </div>

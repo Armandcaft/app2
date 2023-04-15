@@ -141,6 +141,8 @@ Route::controller(TwitterController::class)->group(function(){
     Route::get('social/twitter/callback', 'handleTwitterCallback');
 });
 
+// Route::get('/admin', 'AdminController@index');
+// Route::get('/export/{type}', 'AdminController@export');
 
 Route::fallback(FallbackController::class);
 
