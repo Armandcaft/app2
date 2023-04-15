@@ -1,14 +1,46 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('All') }} {{ Auth::user()->name }}{{ __('\'s') }} {{ __('Articles') }}
+            {{ __('All') }} {{ Auth::user()->name }}@if(substr(Auth::user()->name, -1) === 's')'@else's @endif {{ __('Articles') }}
         </h2>
         <div class="text-center text-green-400">
             <a href="{{ env('USERSTACK_URL') }}" class="hover:text-orange-300"> Get my info </a>
             |
             <a href="{{ url('/telescope') }}" class="hover:text-purple-600"> Monitor My Application </a>
         </div>
+        <div class="text-center text-yellow-300">
+            <a href="{{ url('/send-mail') }}" class="hover:text-green-600"> Testing Mailing Application </a>
+        </div>
+< reserved for Flash messages (for email messaging test 👀) >
+        @if (session()->has('message'))
+            <div class="mx-auto w-4/5 pb-10">
+                <div class="bg-green-500 text-white font-bold px-4 py-2">
+                    Success
+                </div>
+                <div class="border border-t-1 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+                    {{ session()->get('message') }}
+                </div>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="mx-auto w-4/5 pb-10">
+                <div class="bg-red-500 text-white font-bold px-4 py-2">
+                    Warning
+                </div>
+                <div class="border border-t-1 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     </x-slot>
+
         <br>
         {{ $mytime = Carbon\Carbon::now()->format('H:i:s d-m-Y') }}
         <br>

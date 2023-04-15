@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\Social\GithubController;
 use App\Http\Controllers\Social\GoogleController;
 use App\Http\Controllers\Social\TwitterController;
@@ -146,6 +147,8 @@ Route::controller(TwitterController::class)->group(function(){
 
 Route::fallback(FallbackController::class);
 
+Route::get('send-mail', [MailController::class, 'index']);
+Route::get('email/view', [MailController::class, 'displayEmailPage']);
 
 // /*------------------------------------------
 // --------------------------------------------
