@@ -21,7 +21,7 @@ class PostsTableSeeder extends Seeder
                 'excerpt' => 'Summary of Post One',
                 'body' => 'Body of Post One',
                 'image_path' => 'Empty',
-                'is_published' => false,
+                'is_published' => 0,
                 'min_to_read' => 2,
                 'user_id' => 2,
             ],
@@ -30,7 +30,7 @@ class PostsTableSeeder extends Seeder
                 'excerpt' => 'Summary of Post Two',
                 'body' => 'Body of Post Two',
                 'image_path' => 'Empty',
-                'is_published' => false,
+                'is_published' => 1,
                 'min_to_read' => 2,
                 'user_id' => 2,
             ],
@@ -41,23 +41,23 @@ class PostsTableSeeder extends Seeder
                 'image_path' => 'Image Path',
                 'is_published' => 1,
                 'min_to_read' => 2,
-                'user_id' => 2,
+                'user_id' => 1,
             ],
             [
                 'title' => 'Post Four',
                 'excerpt' => 'Summary of Post Four',
                 'body' => 'Body of Post Four',
                 'image_path' => 'Empty',
-                'is_published' => false,
+                'is_published' => 0,
                 'min_to_read' => 2,
-                'user_id' => 3,
+                'user_id' => 1,
             ],
             [
                 'title' => 'Post Five',
                 'excerpt' => 'Summary of Post Five',
                 'body' => 'Body of Post Five',
                 'image_path' => 'Empty',
-                'is_published' => false,
+                'is_published' => 1,
                 'min_to_read' => 2,
                 'user_id' => 3,
             ],
@@ -85,5 +85,7 @@ class PostsTableSeeder extends Seeder
         foreach ($post as $key => $value) {
             Post::create($value);
         }
+
+        Post::factory(100)->create();
     }
 }

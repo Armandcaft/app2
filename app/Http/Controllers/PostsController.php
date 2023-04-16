@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\PostMeta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostFormRequest;
-use App\Models\PostMeta;
 use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
@@ -54,7 +55,13 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        $categories = Category::all();
+        $posts = Post::first();
+
+        return view('blog.create', [
+            'post' => $posts,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -77,7 +84,7 @@ class PostsController extends Controller
             'min_to_read' => 'min:0|max:10',
          * ]);
          */
-
+        #Posts
         $post = Post::create([
             'user_id' => Auth::id(),
             'title' => $request->title,
@@ -88,14 +95,22 @@ class PostsController extends Controller
             'min_to_read' => $request->min_to_read,
         ]);
 
+        #Posts' Metas
         $post->meta()->create([
             'post_id' => $post->id,
-            'meta_description' => $request->meta_dexscription,
+            'meta_description' => $request->meta_description,
             'meta_keywords' => $request->meta_keywords,
             'meta_robots' => $request->meta_robots,
         ]);
 
-        return redirect(route('blog.index'))->with('message', 'Post has been created.');
+        #Categories
+        // dd($post->categories->attach([
+        //     'post_id' => $post->id,
+        //     'category_id' => $post->category,
+        // ]));
+
+        // dd($post);
+        return redirect(route('admin.dashboard'))->with('message', 'Post has been created.');
     }
 
     /**
@@ -157,7 +172,7 @@ class PostsController extends Controller
             '_method',
         ]));
 
-        return redirect(route('blog.index'))->with('message', 'Post has been edited.');
+        return redirect(route('admin.dashboard'))->with('message', 'Post has been edited.');
     }
 
     /**
@@ -170,13 +185,16 @@ class PostsController extends Controller
     {
         Post::destroy($id);
 
-        return redirect(Route('blog.index'))->with('message', 'Post has been deleted.');
+        return redirect(Route('admin.dashboard'))->with('message', 'Post has been deleted.');
     }
 
     public function storeImage($request)
     {
-        $newImageName = uniqid() . '_' . $request->title . '.' . $request->image->extension();
+        if($request->image != null)
+        {
+            $newImageName = uniqid() . '_' . $request->title . '.' . $request->image->extension();
 
-        return $request->image->move(public_path('images'), $newImageName);
+            return $request->image->move(public_path('images'), $newImageName);
+        }
     }
 }

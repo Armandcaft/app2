@@ -37,6 +37,11 @@
                 class="bg-transparent block border-b-2 inline text-2xl outline-none"
                 name="is_published">
 
+            {{-- Error Message Alternative
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror --}}
+
             <input
                 type="text"
                 name="title"
@@ -44,9 +49,6 @@
                 class="bg-transparent block border-b-2 w-full h-20 text-2xl outline-none
                 @error('title') is-invalid @enderror">
 
-            @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <input
                 type="text"
                 name="excerpt"
@@ -66,9 +68,9 @@
 
             <div class="bg-grey-lighter py-10">
                 <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
-                        <span class="mt-2 text-base leading-normal">
-                            Select a file
-                        </span>
+                    <span class="mt-2 text-base leading-normal">
+                        Select a file
+                    </span>
                     <input
                         type="file"
                         name="image"
@@ -94,11 +96,29 @@
                 placeholder="Meta Robots"
                 class="bg-transparent block border-b-2 w-full h-20 text-2xl outline-none">
 
+            {{-- <div>
+                <label for="categories" class="block mb-2 text-sm font-medium text-gray-900">
+                    Select categories tags
+                </label>
+                <select id="tags" name="categories[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5" multiple>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @selected($post->categories->contains($category->id))
+                            @class([
+                                'bg-purple-600 text-white' => $post->categories->contains($category->id)
+                            ])>
+                            {{ $category->title }}
+                        </option>
+                    @endforeach
+                </select>
+            </div> --}}
+
             <button
                 type="submit"
-                class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                class="center uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Submit Post
             </button>
         </form>
     </div>
 </x-app-layout>
+

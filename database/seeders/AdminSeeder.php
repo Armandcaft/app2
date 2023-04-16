@@ -40,7 +40,7 @@ class AdminSeeder extends Seeder
             'name' => 'Christian Armand',
             'email' => 'fohomtchuente@gmail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('raphael00'),
+            'password' => bcrypt('password'),
             'is_verified' => true,
             'is_admin' => true,
         ]);

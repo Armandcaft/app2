@@ -24,10 +24,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // $this->call([
-        //     AdminSeeder::class,  //Upon executing 'php artisan db:seed, calls AdminSeeder.
-        //     PostsTableSeeder::class,
-        // ]);
+        $this->call([
+            AdminSeeder::class,  //Upon executing 'php artisan db:seed, calls AdminSeeder.
+            PostsTableSeeder::class,
+            PostMetaSeeder::class,
+        ]);
 
         Post::factory(100)->create();
         PostMeta::factory(100)->create();

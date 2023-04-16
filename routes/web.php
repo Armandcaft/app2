@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Http\Controllers\HomeController;
@@ -83,8 +84,21 @@ Route::prefix('/blog')->group(function () {
     Route::patch('/{id}', [PostsController::class, 'update'])->name('blog.update');
     //DELETE
     Route::delete('/{id}', [PostsController::class, 'destroy'])->name('blog.destroy');
-}); /* ->middleware('auth'); We defined in a __construct function the middeware usage */
+}); /* ->middleware('auth'); /* We defined in a __construct function the middeware usage */
 
+Route::prefix('/category')->group(function () {
+    Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+    //GET
+    Route::get('/', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/{id}', [CategoryController::class, 'show'])->name('category.show');
+    //POST
+    Route::post('/', [CategoryController::class, 'store'])->name('category.store');
+    //PUT OR PATCH
+    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::patch('/{id}', [CategoryController::class, 'update'])->name('category.update');
+    //DELETE
+    Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+});
 //Route resource
 // Route::resource('/blog', PostsController::class);
 

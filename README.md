@@ -7,17 +7,26 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About App2 Project
+App2 (don'tcpay attention to the name), is a laravel project that comprises of various modules :
+- A One-role-based (admin & !admin) Authentication system with google, facebook and github api integration (Twitter and Linkedln, yet not) [session](https://laravel.com/docs/session).
+- A Blogging system [session](https://laravel.com/docs/session).
+- A User management system [session](https://laravel.com/docs/session).
+- An Email and notification system [session](https://laravel.com/docs/session).
+- An Interactive Dashboard for system (In progress) [session](https://laravel.com/docs/session).
+- A Chatting and discussion system (In progress) [session](https://laravel.com/docs/session).
+- A Calendar and Event management system (In progress) [session](https://laravel.com/docs/session).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+’’php artisan migrate’’
+Generate static users (username, email, password) : (Admin, admin@email.com), (User, user@email.com)
+’’php db:seed --seeder=AdminSeeder’’
+Generate dummy posts published by the static users.
+’’php db:seed --seeder=PostsTableSeeder’’
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Either these or simply run the following command
+
+’’php db:seed’’
+’’’’
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -37,16 +46,6 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 - **[Vehikl](https://vehikl.com/)**
 - **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 - **[Lendio](https://lendio.com)**
 
 ## Contributing
@@ -57,10 +56,10 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Get in touch
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover any issue or vulnerability within this Laravel app, please send an e-mail to me via [fohomtchuente@gmail.com](mailto:fohomtchuente@gmail.com). All security vulnerabilities and various issues will be promptly addressed! :)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This app is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

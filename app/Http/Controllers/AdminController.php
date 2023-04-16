@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +26,7 @@ class AdminController extends Controller
                      ->where('user_id', '=', auth()->user()->id)
                      ->paginate(10);
 
+        $categories = Category::latest()->paginate(5);
         // dd($posts);
 
         $users = User::all();
@@ -32,6 +34,7 @@ class AdminController extends Controller
         return view('admin.index', [
             'posts' => $posts,
             'users' => $users,
+            'categories' => $categories,
         ]);
     }
 

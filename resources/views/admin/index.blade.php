@@ -124,6 +124,12 @@
                             {{ $post->title }}
                         </a>
                     </h2>
+                    <p class="pt-4 italic">
+                        Categories:
+                        @foreach ($post->categories as $category)
+                            {{ $category->title }}
+                        @endforeach
+                    </p>
 
                     <p class="text-gray-900 text-lg py-8 w-full break-words">
                         {{ $post->excerpt }}

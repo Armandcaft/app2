@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::latest()->paginate(5);
+
+        return view('category.index', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -24,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -33,9 +38,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
-        //
+        $request->validate();
+
+        $category = Category::create([
+            'title' => $request->title,
+        ]);
+
+        return redirect(route('category.index'))->with('message', 'Category added successfully !');
     }
 
     /**
@@ -44,9 +55,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('category.show', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -55,9 +70,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::where('id', $id)->first();
+
+        return view('category.edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -67,9 +86,14 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryFormRequest $request, $id)
     {
-        //
+        $request->validated();
+
+        $category = Category::where('id', $id);
+        $category->update($request->only('title'));
+
+        return redirect(route('admin.dashboard'))->with('message', 'Category has been edited successfully !');
     }
 
     /**
@@ -78,8 +102,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::destroy($id);
+
+        return redirect(Route('admin.dashboard'))->with('message', 'Category has been deleted successfully !');
     }
 }

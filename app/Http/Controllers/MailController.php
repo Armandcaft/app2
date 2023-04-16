@@ -17,9 +17,10 @@ class MailController extends Controller
                 'body' => 'This is for testing email using smtp.'
             ];
 
-            Mail::to('algoprogrammable0123@gmail.com')->send(new MyAppMail($mailData));
-            Mail::to('stonewilliam063@gmail.com')->send(new MyAppMail($mailData));
-            Mail::to('lionelrichi6@gmail.com')->send(new MyAppMail($mailData));
+            // Mail::to('fedjojonhson@gmail.com')->send(new MyAppMail($mailData));
+            // Mail::to('algoprogrammable0123@gmail.com')->send(new MyAppMail($mailData));
+            // Mail::to('stonewilliam063@gmail.com')->send(new MyAppMail($mailData));
+            // Mail::to('lionelrichi6@gmail.com')->send(new MyAppMail($mailData));
             Mail::to('stormeur123@gmail.com')->send(new MyAppMail($mailData));
 
             // return redirect()->back()->with('message', 'Email is sent successfully !');

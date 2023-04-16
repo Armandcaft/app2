@@ -27,13 +27,15 @@ class PostFormRequest extends FormRequest
             'title' => 'required|max:255|unique:posts,title,'.$this->id,
             'excerpt' => 'required',
             'body' => 'required',
-            'image_path' => ['mimes:jpg,png,jpeg', 'max:5048'],
+            'image_path' => ['mimes:jpg,png,jpeg', 'max:5048', ],
             // 'is_published' => '',
             'min_to_read' => 'min:0|max:10',
         ];
 
         if (in_array($this->method(), ['POST', /*'PUT'*/])) {
-            $rules['image'] = ['required', 'mimes:jpg,png,jpeg', 'max:5048'];
+            if(($rules['image_path']) != null)
+            // dd('eee');
+                $rules['image_path'] = ['nullable', 'mimes:jpg,png,jpeg', 'max:5048'];
         }
 
         return $rules;
