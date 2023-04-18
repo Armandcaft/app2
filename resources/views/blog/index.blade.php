@@ -34,6 +34,7 @@
         </div>
     @endif
 
+    @empty ($posts)
     @foreach($posts as $post)
         <div class="w-4/5 mx-auto pb-10">
             <div class="bg-white pt-10 rounded-lg drop-shadow-2xl sm:basis-3/4 basis-full sm:mr-8 pb-10 sm:pb-0">
@@ -73,6 +74,17 @@
             </div>
         </div>
     @endforeach
+    @else
+    <div class="w-4/5 mx-auto pb-10">
+        <div class="bg-white pt-10 rounded-lg drop-shadow-2xl sm:basis-3/4 basis-full sm:mr-8 pb-10 sm:pb-0">
+            <div class="w-11/12 mx-auto pb-10">
+                <h2 class="text-gray-900 text-2xl font-bold pt-6 pb-0 sm:pt-0 hover:text-gray-700 transition-all">
+                    __('No Article')
+                </h2>
+            </div>
+        </div>
+    </div>
+    @endempty
 
     <div >
         {{ $posts->links() }}

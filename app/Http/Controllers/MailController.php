@@ -21,6 +21,7 @@ class MailController extends Controller
             // Mail::to('algoprogrammable0123@gmail.com')->send(new MyAppMail($mailData));
             // Mail::to('stonewilliam063@gmail.com')->send(new MyAppMail($mailData));
             // Mail::to('lionelrichi6@gmail.com')->send(new MyAppMail($mailData));
+            // Mail::to('tchudjotchuente@gmail.com')->send(new MyAppMail($mailData));
             Mail::to('stormeur123@gmail.com')->send(new MyAppMail($mailData));
 
             // return redirect()->back()->with('message', 'Email is sent successfully !');
