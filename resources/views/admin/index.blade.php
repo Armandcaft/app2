@@ -148,13 +148,21 @@
                     Edit
                 </a>
 
-                <form action="{{ route('blog.destroy', ['id'=>$post->id]) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="pt-3 text-red-500 pr-3" type="submit">
-                        Delete
-                    </button>
-                </form>
+                <nav>
+                    <div class="flex">
+                        <form action="{{ route('blog.destroy', ['id'=>$post->id]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="pt-3 text-red-500 pr-3" type="submit">
+                                Delete
+                            </button>
+                        </form>
+
+                        <a href="{{ route('affect_category', ['post_id'=>$post->id]) }}" class="block italic align-right text-blue-500 border-b-1 border-green-400 ml-auto">
+                            Affect Category
+                        </a>
+                    </div>
+                </nav>
 
                 </div>
             </div>

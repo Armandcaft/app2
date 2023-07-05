@@ -197,4 +197,26 @@ class PostsController extends Controller
             return $request->image->move(public_path('images'), $newImageName);
         }
     }
+
+    public function affectCategory($id)
+    {
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+
+        // dd($post->meta);
+
+        return view('blog.affect', [
+            'post' => $post,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function updateAffect(Request $request, $id)
+    {
+        $post = Post::where('id', $id)->first();
+
+        $newPost = DB::table('posts');
+
+        return back()->with('message', 'Good!');
+    }
 }

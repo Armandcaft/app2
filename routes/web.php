@@ -102,6 +102,9 @@ Route::prefix('/category')->group(function () {
 //Route resource
 // Route::resource('/blog', PostsController::class);
 
+Route::get('/affect_category_to_post/{post_id}', [PostsController::class, 'affectCategory'])->name('affect_category');
+Route::post('/update_affect_category_to_post/{post_id}', [PostsController::class, 'updateAffect'])->name('update_affect_category');
+
 //Route for te invoke method
 Route::get('/home', HomeController::class);
 
